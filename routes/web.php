@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/contact', function (){
-      return "hi mutherfuckers ! ";  });
+      return "hello evryOne! ";  });
 Route::get('something/route/like/that', array('as'=>'name.to_use',function(){
 
     $url = route('name.to_use');
