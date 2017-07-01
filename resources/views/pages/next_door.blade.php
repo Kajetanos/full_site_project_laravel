@@ -11,8 +11,22 @@ and open the template in the editor.
     </head>
     <body>
         <h1>Widok nie powala ale to pages.nextdoor</h1>
+        <form  action="#" method="post">
+            {{ csrf_field() }} <?php // to musi być aby dane z formularza były obsługiwane ?>
+            <input type="text" name="id"><br>
+            <input type="submit" value="znajdź po id">
+        </form>
+        
+        @foreach($post as $row)
+        <br>Tytuł :{{$row->title}}
+        <br>Context:{{$row->content}}
+        @endforeach
+        <br>
+        <br>
+        <a href="/geting">Jeżeli chcesz dodać nowy wpis</a>
+
         <?php
-        // put your code here
+        // @include('pages.contact')--> dodaje includa całej akcji 
         ?>
     </body>
 </html>

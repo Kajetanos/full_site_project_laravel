@@ -13,12 +13,14 @@ and open the template in the editor.
     <body>
         <h1> Welcome to contact Page</h1>
         <h3> Write your first name and last name</h3>
-        <form  action="get_some_other" method="post">
+        <form  action="#" method="post">
             {{ csrf_field() }} <?php // to musi być aby dane z formularza były obsługiwane ?>
             First Name: <input type="text" name="first_name"><br>
             Last  Name: <input type="text" name="last_name"><br>
             <input type="submit" value="wyślij">
         </form>
+        <br>
+        <br><a href="/get_some_other">Jeżeli chcesz znaleźć wpis ze wskazaniem id</a>
         
         <?php
         // put your code here

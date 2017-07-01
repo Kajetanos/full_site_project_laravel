@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
+use App\User;
 
 class PostsController extends Controller
 {
@@ -25,8 +26,8 @@ class PostsController extends Controller
      */
     public function create()
     {
-        echo "hello elegankco przeszlismy";
-        return view('pages.contact');
+//        echo "hello elegankco przeszlismy";
+//        return view('pages.contact');
     }
 
     /**
@@ -94,13 +95,32 @@ class PostsController extends Controller
     public function to_test_function (Request $request) {
         
         if(Input::get('first_name')!=null && Input::get("last_name")!=null){
-       $input_first_name= Input::get("first_name");
-       $input_last_name = Input::get("last_name");
-       
-       echo "Witamy na naszej stronie " .$input_first_name; 
-       echo "<br> Dawno nie gościliśmy nikogo o takim nazwisku :".$input_last_name;
+       $title= Input::get("first_name");
+       $content = Input::get("last_name");
+       $to_save_records = \App\Post::updateOrCreate(['title'=>$title] , 
+               [
+                   'title'=>$title,
+                   'content'=> $content,
+               ]);
+//               var_dump($to_save_records);
         }
        echo "<br>connect from ->page.contact ". "i id ";
-        return view('pages.contact', compact('input_last_name', 'input_first_name'));
+        return view('pages.contact', compact('title', 'content'));
     }
+    public function find_by_id (Request $request ) {
+        
+         $id = Input::get('id');
+         $post = \App\Post::where('id',$id)->orderBy('id', 'desc')->take(1)->get();
+         
+         return view('pages.next_door',compact('post') );
+    }
+    public function delete_by_id(Request $request) {
+        $id = Input::get('id');
+        $to_delete = \App\Post::find($id)->delete();
+    }
+    public function user() {
+        print_r( User::find(1)->posts);
+        return view("pages.user");
+    }
+    
 }

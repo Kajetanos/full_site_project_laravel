@@ -25,6 +25,8 @@ Route::get('/', function () {
 
 Route::get('/post', 'PostsController@index');
 Route::resource('posts' , 'PostsController');
-Route::get('/geting', 'PostsController@to_test_function');
 Route::post('/geting', 'PostsController@to_test_function');
-Route::get('/get_some_other', 'PostsController@create');
+Route::get('/geting', 'PostsController@to_test_function');
+Route::post('/get_some_other', 'PostsController@find_by_id');
+Route::get('/get_some_other', 'PostsController@find_by_id');
+Route::get('/user', 'PostsController@user');
