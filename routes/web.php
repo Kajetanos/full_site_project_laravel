@@ -29,4 +29,6 @@ Route::post('/geting', 'PostsController@to_test_function');
 Route::get('/geting', 'PostsController@to_test_function');
 Route::post('/get_some_other', 'PostsController@find_by_id');
 Route::get('/get_some_other', 'PostsController@find_by_id');
-Route::get('/user', 'PostsController@user');
+Route::get('/user', 'PostsController@relations');
+Route::get('/country', 'PostsController@example_relations_with_country');
+Route::get('/polymorphic', 'PostsController@polymorphic_relation');

@@ -14,14 +14,18 @@ and open the template in the editor.
         <form  action="#" method="post">
             {{ csrf_field() }} <?php // to musi być aby dane z formularza były obsługiwane ?>
             <input type="text" name="id"><br>
-            <input type="submit" value="znajdź po id">
-        </form>
+            <input type="submit" value="znajdź user-a po id"><br>
+            <input  type="text" name="user_with_post"><br>
+            <input type="submit" value="znajdź user-a z postami">
+
+        <br>{{$post}}
         
-        @foreach($post as $row)
-        <br>Tytuł :{{$row->title}}
-        <br>Context:{{$row->content}}
+        <br>{{$user}}<br>
+        @foreach ($user as $user_value)
+        <h2>{{$user_value->name}}</h2>
+        <h2>{{$user_value->email}}</h2>
+        <h2>{{$user_value->id}}</h2>
         @endforeach
-        <br>
         <br>
         <a href="/geting">Jeżeli chcesz dodać nowy wpis</a>
 
